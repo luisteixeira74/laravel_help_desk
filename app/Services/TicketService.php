@@ -45,9 +45,9 @@ class TicketService
         return $this->ticketRepository->getById($id);
     }
 
-    public function update($data, $id)
+    public function update($request, $id)
     {
-        $validator = Validator::make($data, [
+        $validator = Validator::make($request->all(), [
             'titulo' => 'required',
             'descricao' => 'required',
         ]);
@@ -56,7 +56,7 @@ class TicketService
             return $validator->errors()->first();
         }
 
-        return $this->ticketRepository->update($data, $id);
+        return $this->ticketRepository->update($request, $id);
     }
 
     public function delete($id)

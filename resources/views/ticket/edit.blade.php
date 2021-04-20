@@ -8,9 +8,9 @@
                 <div class="card-header">Editar Ticket {{ $ticket->id }}</div>
 
                 <div class="card-body">
-                    <form method="PUT" action="{{ route('ticket.update', ['id' => $ticket->id]) }}">
+                    <form action="{{ route('ticket.update', $ticket->id) }}" method="POST">
                         @csrf
-
+                        @method('PUT')
                         <div class="form-group row">
                             <label for="titulo" class="col-md-4 col-form-label text-md-right">Título</label>
 

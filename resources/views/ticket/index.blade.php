@@ -4,10 +4,22 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <div class="col-12 text-center mb-3">
+                <a href="{{ route('ticket.create') }}" class="btn btn-success">
+                    Novo Ticket
+                </a>
+            </div>
+            
             <div class="card">
                 <div class="card-header">Tickets</div>
 
                 <div class="card-body">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
+
                     @forelse ($tickets as $ticket)
                         <div class="row">
                             <div class="col-2">

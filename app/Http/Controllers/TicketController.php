@@ -104,7 +104,7 @@ class TicketController extends Controller
     {
         $result = $this->ticketService->update($request, $id);
 
-        return redirect()->route('ticket.update',['id' => $id]);
+        return redirect()->route('ticket.index')->with('success', 'Ticket atualizado com sucesso');
     }
 
     /**

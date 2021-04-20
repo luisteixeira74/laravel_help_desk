@@ -54,10 +54,12 @@ class TicketRepository
      * @return Ticket
      */
     public function update($data, $id)
-    {
+    {  
         $ticket = Ticket::find($id);
         $ticket->titulo = $data['titulo'];
         $ticket->descricao = $data['descricao'];
+        
+        return $ticket->save();
     }
 
     /**
