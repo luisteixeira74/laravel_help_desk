@@ -86,11 +86,11 @@ class TicketController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
         $ticket = $this->ticketService->getById($id);
 
-        return view('ticket.edit', ['ticket' => $ticket]);
+        return view('ticket.edit', ['ticket' => $ticket, 'isDelete' => $request->has('isDelete')]);
     }
 
     /**
@@ -115,6 +115,7 @@ class TicketController extends Controller
      */
     public function destroy($id)
     {
+        dd('aqui');
         return $this->ticketService->delete($id);
     }
 }

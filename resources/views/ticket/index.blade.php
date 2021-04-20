@@ -60,7 +60,7 @@
                                 </a>
                             </div>
                             <div class="col-10">
-                                <a href="{{ route('ticket.destroy', ['id' => $ticket->id]) }}" type="button" class="btn btn-danger">
+                                <a href="{{ route('ticket.edit', ['id' => $ticket->id, 'isDelete' => true]) }}" type="button" class="btn btn-danger">
                                     Deletar
                                 </a>
                             </div>

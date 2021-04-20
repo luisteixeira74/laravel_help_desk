@@ -5,7 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Editar Ticket {{ $ticket->id }}</div>
+                <div class="card-header">
+                    @if($isDelete)
+                        Deletar 
+                    @else  
+                        Editar
+                    @endif 
+                    Ticket {{ $ticket->id }}</div>
 
                 <div class="card-body">
                     <form action="{{ route('ticket.update', $ticket->id) }}" method="POST">
@@ -47,9 +53,17 @@
                                     Voltar
                                 </a>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button type="submit" class="btn btn-primary">
-                                    Editar
-                                </button>
+                                @if(!$isDelete)
+                                    <button type="submit" class="btn btn-primary">
+                                        Editar
+                                    </button>
+                                @endif
+
+                                @if($isDelete)
+                                    <button type="submit" class="btn btn-danger">
+                                        Click para Deletar
+                                    </button>
+                                @endif
                         </div>
                     </form>
                 </div>
