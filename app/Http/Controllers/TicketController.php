@@ -83,12 +83,14 @@ class TicketController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Ticket  $ticket
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ticket $ticket)
+    public function edit($id)
     {
-        //
+        $ticket = $this->ticketService->getById($id);
+
+        return view('ticket.edit', ['ticket' => $ticket]);
     }
 
     /**
@@ -98,9 +100,11 @@ class TicketController extends Controller
      * @param  \App\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ticket $ticket)
+    public function update(Request $request, $id)
     {
-        //
+        $result = $this->ticketService->update($request, $id);
+
+        return redirect()->route('ticket.update',['id' => $id]);
     }
 
     /**
@@ -109,8 +113,8 @@ class TicketController extends Controller
      * @param  \App\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ticket $ticket)
+    public function destroy($id)
     {
-        //
+        return $this->ticketService->delete($id);
     }
 }

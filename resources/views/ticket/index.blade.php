@@ -41,6 +41,18 @@
                                 {{$ticket->descricao}}
                             </div>
                         </div>
+                        <div class="row text-right pt-4">
+                            <div class="col-2">
+                                <a href="{{ route('ticket.edit', ['id' => $ticket->id]) }}" type="button" class="btn btn-primary">
+                                    Editar
+                                </a>
+                            </div>
+                            <div class="col-10">
+                                <a href="{{ route('ticket.destroy', ['id' => $ticket->id]) }}" type="button" class="btn btn-danger">
+                                    Deletar
+                                </a>
+                            </div>
+                        </div>
                         <hr />
                     @empty
                         <p>Não existem tickets</p>
